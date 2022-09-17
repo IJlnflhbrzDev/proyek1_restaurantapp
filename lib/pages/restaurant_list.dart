@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:proyek1_restaurantapp/pages/restaurant_detail.dart';
 
 class ListRestaurant extends StatelessWidget {
   const ListRestaurant({Key? key}) : super(key: key);
@@ -30,6 +31,12 @@ class ListRestaurant extends StatelessWidget {
 
                     return InkWell(
                       onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const RestaurantDetail(),
+                          ),
+                        );
                         print('DONE!');
                       },
                       child: Material(
