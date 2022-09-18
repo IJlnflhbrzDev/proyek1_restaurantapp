@@ -31,10 +31,21 @@ class ListRestaurant extends StatelessWidget {
 
                     return InkWell(
                       onTap: () {
+                        print(listDataRestaurant['id']);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const RestaurantDetail(),
+                            builder: (context) => RestaurantDetail(
+                              restaurantID: listDataRestaurant['id'],
+                              restaurantNAME: listDataRestaurant['name'],
+                              restaurantCITY: listDataRestaurant['city'],
+                              restaurantDESCRIPTION:
+                                  listDataRestaurant['description'],
+                              restaurantPICTUREID:
+                                  listDataRestaurant['pictureId'],
+                              restaurantRATING:
+                                  listDataRestaurant['rating'].toString(),
+                            ),
                           ),
                         );
                         print('DONE!');

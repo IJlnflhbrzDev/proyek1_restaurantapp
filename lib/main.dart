@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:proyek1_restaurantapp/model/model_restaurant.dart';
 import 'package:proyek1_restaurantapp/pages/home.dart';
+import 'package:proyek1_restaurantapp/pages/restaurant_detail.dart';
 import 'package:proyek1_restaurantapp/theme/text_theme.dart';
 
 import 'theme/style.dart';
