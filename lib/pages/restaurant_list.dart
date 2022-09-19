@@ -28,10 +28,12 @@ class ListRestaurant extends StatelessWidget {
                   itemCount: dataRestaurant.length,
                   itemBuilder: (context, index) {
                     var listDataRestaurant = dataRestaurant[index];
-
+                    var listFoods =
+                        listDataRestaurant['menus']['foods'].map((e) {
+                      return e;
+                    }).toList();
                     return InkWell(
                       onTap: () {
-                        print(listDataRestaurant['id']);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -45,10 +47,12 @@ class ListRestaurant extends StatelessWidget {
                                   listDataRestaurant['pictureId'],
                               restaurantRATING:
                                   listDataRestaurant['rating'].toString(),
+                              restaurantFood: listFoods,
                             ),
                           ),
                         );
-                        print('DONE!');
+
+                        // print(test[0]);
                       },
                       child: Material(
                         color: Colors.transparent,
@@ -143,7 +147,7 @@ class ListRestaurant extends StatelessWidget {
                 ),
               );
             } else if (snapshot.connectionState == ConnectionState.waiting) {
-              print('Waiting Connections');
+              return const Center(child: CircularProgressIndicator());
             } else {
               throw Exception('Failed To Load Data');
             }
