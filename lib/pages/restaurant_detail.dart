@@ -12,6 +12,7 @@ class RestaurantDetail extends StatelessWidget {
     required this.restaurantRATING,
     required this.restaurantDESCRIPTION,
     required this.restaurantFood,
+    required this.restaurantDrink,
   }) : super(key: key);
   static const routeName = '/restaurant_detaild';
 
@@ -22,6 +23,7 @@ class RestaurantDetail extends StatelessWidget {
   final String? restaurantRATING;
   final String? restaurantDESCRIPTION;
   final List restaurantFood;
+  final List restaurantDrink;
 
   @override
   Widget build(BuildContext context) {
@@ -95,23 +97,67 @@ class RestaurantDetail extends StatelessWidget {
                   const SizedBox(height: 10),
                   Text(
                     '$restaurantDESCRIPTION',
-                    style: Theme.of(context).textTheme.bodyText2,
+                    style: Theme.of(context)
+                        .textTheme
+                        .caption!
+                        .copyWith(fontSize: 13),
                   ),
                   const SizedBox(height: 30),
-                  Text(
-                    'Menus',
-                    style: Theme.of(context).textTheme.headline5,
-                  ),
-                  Container(
-                    height: 120,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: restaurantFood.length,
-                      itemBuilder: (context, index) {
-                        var foodName = restaurantFood[index]['name'];
-                        return Text(foodName);
-                      },
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Menu Makanan',
+                                style: Theme.of(context).textTheme.headline6),
+                            const SizedBox(height: 3),
+                            SizedBox(
+                              height: 200,
+                              child: ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                itemCount: restaurantFood.length,
+                                itemBuilder: (context, index) {
+                                  var foodName = restaurantFood[index]['name'];
+                                  return Text(foodName,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .copyWith(fontSize: 13, height: 1.7));
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Menu Minuman',
+                                style: Theme.of(context).textTheme.headline6),
+                            const SizedBox(height: 3),
+                            SizedBox(
+                              height: 200,
+                              child: ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                itemCount: restaurantDrink.length,
+                                itemBuilder: (context, index) {
+                                  var drinkName =
+                                      restaurantDrink[index]['name'];
+                                  return Text(drinkName,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .copyWith(fontSize: 13, height: 1.7));
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   )
                 ],
               ),

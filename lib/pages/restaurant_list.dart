@@ -32,6 +32,10 @@ class ListRestaurant extends StatelessWidget {
                         listDataRestaurant['menus']['foods'].map((e) {
                       return e;
                     }).toList();
+                    var listDrinks =
+                        listDataRestaurant['menus']['drinks'].map((e) {
+                      return e;
+                    }).toList();
                     return InkWell(
                       onTap: () {
                         Navigator.push(
@@ -48,6 +52,7 @@ class ListRestaurant extends StatelessWidget {
                               restaurantRATING:
                                   listDataRestaurant['rating'].toString(),
                               restaurantFood: listFoods,
+                              restaurantDrink: listDrinks,
                             ),
                           ),
                         );
